@@ -1,0 +1,37 @@
+@model YourNamespace.Models.Insuree
+@Html.HiddenFor(model => model.Quote)
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Insuree</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <!-- Other input fields -->
+
+        <!-- REMOVE or comment out this line -->
+        @* @Html.EditorFor(model => model.Quote) *@
+    </div>
+}
+@model IEnumerable<YourNamespace.Models.Insuree>
+
+<table class="table">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Quote</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.FirstName</td>
+        <td>@item.LastName</td>
+        <td>@item.EmailAddress</td>
+        <td>@item.Quote.ToString("C")</td>
+    </tr>
+}
+</table>
